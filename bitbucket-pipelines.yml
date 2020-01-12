@@ -1,0 +1,12 @@
+pipelines:
+  default:
+    - step:
+        name: Build
+        image: microsoft/dotnet
+        script:
+          - dotnet restore
+          - dotnet build
+          - dotnet test
+        artifacts:
+          - ParkingLotApi/bin/**
+          - ParkingLotApi.Tests/bin/**
