@@ -85,7 +85,3 @@ Executando:
    Executar o seguinte comando na raíz do projeto:
 
         docker-compose up
-
-CI/CD:
-
-	![](CICD/cicd.png)		
