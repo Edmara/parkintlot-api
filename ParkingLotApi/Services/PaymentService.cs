@@ -10,9 +10,11 @@ namespace ParkingLotApi.Services
 
         private readonly IPaymentRepository _repo;
         private readonly ITicketService ticketService;
-        public PaymentService(IPaymentRepository repo)
+
+        public PaymentService(IPaymentRepository repo, ITicketService ticketService)
         {
             this._repo = repo;
+            this.ticketService = ticketService;
         }
 
         public IEnumerable<Payment> GetAllPayments() => _repo.GetAllPayments();

@@ -9,12 +9,16 @@ namespace ParkingLotApi.Services
     {
 
         private readonly IParkingRepository _repo;
-        private readonly TicketService ticketService;
-        private readonly LotService lotService;
-        private readonly PaymentService paymentService;
-        public ParkingService(IParkingRepository repo)
+        private readonly ITicketService ticketService;
+        private readonly ILotService lotService;
+        private readonly IPaymentService paymentService;
+
+        public ParkingService(IParkingRepository repo, ITicketService ticketService, ILotService lotService, IPaymentService paymentService)
         {
             _repo = repo;
+            this.ticketService = ticketService;
+            this.lotService = lotService;
+            this.paymentService = paymentService;
         }
 
         public IEnumerable<Parking> GetAllParkings() => _repo.GetAllParkings();
@@ -31,7 +35,6 @@ namespace ParkingLotApi.Services
             Parking parking = new Parking();
             parking.Id = GetNextId();
             parking.EntryDate = new DateTime();
-            parking.ExitDate = null;
             parking.Ticket = ticketService.Create();
             parking.Lot = lotService.Entry();
 

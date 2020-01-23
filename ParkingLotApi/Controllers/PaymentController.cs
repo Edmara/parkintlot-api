@@ -19,14 +19,14 @@ namespace ParkingLotApi.Controllers
             _service = service;
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet]
         public ActionResult<IEnumerable<Payment>> Get()
         {
             return new ObjectResult(_service.GetAllPayments());
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet("{id}")]
         public ActionResult<Payment> Get(long id)
         {
@@ -37,7 +37,7 @@ namespace ParkingLotApi.Controllers
             return new ObjectResult(payment);
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet("{initialDate}/{finalDate}")]
         public ActionResult<IEnumerable<Payment>> GetPaymentsByDate(DateTime initialDate, DateTime finalDate)
         {
@@ -48,7 +48,7 @@ namespace ParkingLotApi.Controllers
             return new ObjectResult(payment);
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpPost]
         public ActionResult<Payment> Post([FromBody] Ticket ticket)
         {
@@ -57,7 +57,7 @@ namespace ParkingLotApi.Controllers
             return new OkObjectResult(payment);
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpPut("{id}")]
         public ActionResult<Payment> Put(long id, [FromBody] Payment payment)
         {
@@ -71,7 +71,7 @@ namespace ParkingLotApi.Controllers
             return new OkObjectResult(_service.Update(payment));
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

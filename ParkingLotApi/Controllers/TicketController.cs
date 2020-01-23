@@ -17,14 +17,14 @@ namespace ParkingLotApi.Controllers
             _service = service;
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet]
         public ActionResult<IEnumerable<Ticket>> Get()
         {
             return new ObjectResult(_service.GetAllTickets());
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet("{id}")]
         public ActionResult<Ticket> Get(long id)
         {
@@ -35,7 +35,7 @@ namespace ParkingLotApi.Controllers
             return new ObjectResult(ticket);
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpPut("{id}")]
         public ActionResult<Ticket> Put(long id, [FromBody] Ticket ticket)
         {

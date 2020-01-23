@@ -58,17 +58,23 @@ namespace ParkingLotApi.Services
         public Lot Entry()
         {
             Lot lot = _repo.getEmptyLot();
+            
+            if (lot == null)
+            {
+                return null;
+            }
+
             lot.Busy = true;
 
             return lot;
         }
 
-        internal void Exit(Lot lot)
+        public void Exit(Lot lot)
         {
             lot.Busy = false;
             Update(lot);
         }
-
+        
     }
 
 }

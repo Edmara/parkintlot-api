@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using ParkingLotApi.Config;
 using ParkingLotApi.Database;
 using ParkingLotApi.Repositories;
@@ -41,10 +43,10 @@ namespace ParkingLotApi
             var parkingRepository = new ParkingRepository(parkingLotContext);
             services.AddSingleton<IParkingRepository>(parkingRepository);
 
-            services.AddSingleton<LotService>();
-            services.AddSingleton<ParkingService>();
-            services.AddSingleton<PaymentService>();
-            services.AddSingleton<TicketService>();
+            services.AddSingleton<ILotService, LotService>();
+            services.AddSingleton<IParkingService, ParkingService>();
+            services.AddSingleton<IPaymentService, PaymentService>();
+            services.AddSingleton<ITicketService, TicketService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -56,6 +58,23 @@ namespace ParkingLotApi
                                             Version = "v1",
                                             Description = "ParkingLot API tutorial using MongoDB",
                                         });
+
+
+                                        //OpenApiSecurityScheme scheme = new OpenApiSecurityScheme
+                                        //{
+                                        //    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                                        //    Name = "Authorization",
+                                        //    In = ParameterLocation.Header,
+                                        //    Type = SecuritySchemeType.ApiKey
+                                        //};
+
+                                        //c.AddSecurityDefinition("Bearer", scheme);
+
+                                        //OpenApiSecurityRequirement requirements = new OpenApiSecurityRequirement();
+                                        //requirements.Add(scheme, new string[] { });
+
+                                        //c.AddSecurityRequirement(requirements);
+                                        
                                     });
 
             var signingConfigurations = new SigningConfigurations();

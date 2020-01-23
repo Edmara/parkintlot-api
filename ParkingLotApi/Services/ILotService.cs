@@ -13,5 +13,7 @@ namespace ParkingLotApi.Services
         long GetNextId();
         Lot Create(Lot lot);
         IEnumerable<Lot> getEmptiesLots();
+        Lot Entry();
+        void Exit(Lot lot);
     }
 }

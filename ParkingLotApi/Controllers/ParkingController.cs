@@ -17,7 +17,7 @@ namespace ParkingLotApi.Controllers
             _service = service;
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet]
         public ActionResult<IEnumerable<Parking>> Get()
         {
@@ -25,14 +25,14 @@ namespace ParkingLotApi.Controllers
 
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet("ActualParkings")]
         public ActionResult<IEnumerable<Parking>> GetActualParkings()
         {
             return new ObjectResult(_service.GetActualParkings());
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpGet("{id}")]
         public ActionResult<Parking> Get(long id)
         {
@@ -43,14 +43,14 @@ namespace ParkingLotApi.Controllers
             return new ObjectResult(parking);
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpPost]
         public ActionResult<Parking> Post()
         {
             return new OkObjectResult(_service.Entry());
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpPut("{id}")]
         public ActionResult<Parking> Put(long id, [FromBody] Parking parking)
         {
@@ -62,7 +62,7 @@ namespace ParkingLotApi.Controllers
             return new OkObjectResult(_service.Update(parking));
         }
 
-        [Authorize("Bearer")]
+        // [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
