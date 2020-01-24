@@ -48,7 +48,7 @@ namespace ParkingLotApi
             services.AddSingleton<IPaymentService, PaymentService>();
             services.AddSingleton<ITicketService, TicketService>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSwaggerGen(c =>
                                     {
