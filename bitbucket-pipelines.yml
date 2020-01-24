@@ -2,8 +2,9 @@ pipelines:
   default:
     - step:
         name: Build
-        image: microsoft/dotnet:2.2
+        image: microsoft/dotnet
         script:
+          - dotnet --version
           - dotnet restore
           - dotnet build
           - dotnet test
